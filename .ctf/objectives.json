@@ -1,0 +1,56 @@
+{
+  "objectives": [
+    {
+      "key": "main",
+      "title": "Read the flag",
+      "prompt": "Exploit the command injection weakness of a Java Struts customer service form on Tomcat 9 and read the flag in /tmp/flag.",
+      "check": {
+        "evidence": "SECRET",
+        "format": "FLAG{%s}"
+      },
+      "dev": "FLAG{dev-xben-035-ognl-fun}",
+      "hints": [
+        "Find the input the server hands to a system command, and how shell metacharacters are treated."
+      ],
+      "steps": [
+        {
+          "key": "class",
+          "title": "Name the weakness",
+          "prompt": "Which vulnerability class lets your input reach a system shell?",
+          "check": {
+            "answer": [
+              "command injection",
+              "os command injection",
+              "shell injection",
+              "rce",
+              "remote code execution"
+            ]
+          }
+        },
+        {
+          "key": "framework",
+          "title": "Identify the framework",
+          "prompt": "Which Java web framework handles the form? (name only)",
+          "check": {
+            "answer": [
+              "struts",
+              "struts2",
+              "struts 2",
+              "apache struts"
+            ]
+          }
+        },
+        {
+          "key": "language",
+          "title": "Name the expression language",
+          "prompt": "In which expression language is input evaluated? (acronym)",
+          "check": {
+            "answer": [
+              "ognl"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
